@@ -30,6 +30,14 @@ class AddClient extends Component {
     }
 
     firestore.add({ collection: "clients" }, newClient);
+
+    this.setState({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      balance: ""
+    });
   };
 
   render() {
