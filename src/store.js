@@ -3,17 +3,7 @@ import "firebase/firestore"; // <- needed if using firestore
 import { createStore, combineReducers, compose } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 import { createFirestoreInstance, firestoreReducer } from "redux-firestore";
-
-const fbConfig = {
-  apiKey: "AIzaSyCpNhchb7MTEZxs7m0zLNF6x6UhHxnBTRw",
-  authDomain: "react-client-panel-88093.firebaseapp.com",
-  databaseURL: "https://react-client-panel-88093.firebaseio.com",
-  projectId: "react-client-panel-88093",
-  storageBucket: "react-client-panel-88093.appspot.com",
-  messagingSenderId: "1074083194973",
-  appId: "1:1074083194973:web:361c07fb6583b6860485b4",
-  measurementId: "G-GRSGMH5H82"
-};
+import fbConfig from "./firebaseAPI";
 
 // react-redux-firebase config
 const rrfConfig = {
