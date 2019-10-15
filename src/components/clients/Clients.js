@@ -48,35 +48,38 @@ class Clients extends Component {
                 </span>
               </h5>
             </div>
-            <table className="table">
-              <thead className="thead-inverse">
-                <tr>
-                  <th>Имя</th>
-                  <th>Почта</th>
-                  <th>Долг</th>
-                  <th />
-                </tr>
-              </thead>
-              <tbody>
-                {clients.map(client => (
-                  <tr key={client.id}>
-                    <td>
-                      {client.firstName} {client.lastName}
-                    </td>
-                    <td>{client.email}</td>
-                    <td>{parseFloat(client.balance).toFixed(2)}₽</td>
-                    <td>
-                      <Link
-                        to={`/clients/${client.id}`}
-                        className="btn btn-secondary btn-sm"
-                      >
-                        <i className="fas fa-arrow-circle-right"></i> Подробнее
-                      </Link>
-                    </td>
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead className="thead-inverse">
+                  <tr>
+                    <th>Имя</th>
+                    <th>Почта</th>
+                    <th>Долг</th>
+                    <th />
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {clients.map(client => (
+                    <tr key={client.id}>
+                      <td>
+                        {client.firstName} {client.lastName}
+                      </td>
+                      <td>{client.email}</td>
+                      <td>{parseFloat(client.balance).toFixed(2)}₽</td>
+                      <td>
+                        <Link
+                          to={`/client/${client.id}`}
+                          className="btn btn-secondary btn-sm"
+                        >
+                          <i className="fas fa-arrow-circle-right"></i>{" "}
+                          Подробнее
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       );
