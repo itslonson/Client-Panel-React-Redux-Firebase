@@ -11,6 +11,7 @@ import { rrfProps } from "./store";
 import AppNavbar from "./components/layout/AppNavbar";
 import Dashboard from "./components/layout/Dashboard";
 import ClientDetails from "./components/clients/ClientDetails";
+import EditClient from "./components/clients/EditClient";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/client/:id" component={ClientDetails} />
+                <Route exact path="/client/edit/:id" component={EditClient} />
               </Switch>
             </div>
           </div>
