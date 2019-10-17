@@ -29,7 +29,7 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
 
-      .catch(err => alert("Invalid"));
+      .catch(err => alert("Неверные данные входа"));
   };
 
   render() {
