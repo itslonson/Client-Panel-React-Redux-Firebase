@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-// import { compose } from "redux";
-// import { connect } from "react-redux";
+
+import { notifyUser } from "../../actions/notifyActions";
+import Alert from "../layout/Alert";
+
+import { compose } from "redux";
+import { connect } from "react-redux";
+
 import { firestoreConnect } from "react-redux-firebase";
 import PropTypes from "prop-types";
+
+// TODO CLEAR NOTIFICATION MESSAGES
 
 class AddClient extends Component {
   state = {
@@ -24,14 +31,16 @@ class AddClient extends Component {
 
     const newClient = this.state;
 
-    const { firestore } = this.props;
+    const { firestore, notifyUser } = this.props;
 
     // If no balance, assign zero
     if (newClient.balance === "") {
       newClient.balance = 0;
     }
 
-    firestore.add({ collection: "clients" }, newClient);
+    firestore
+      .add({ collection: "clients" }, newClient)
+      .then(notifyUser("Клиент добавлен", "success"));
 
     this.setState({
       firstName: "",
@@ -43,9 +52,13 @@ class AddClient extends Component {
   };
 
   render() {
+    const { message, messageType } = this.props.notify;
     return (
       <div>
         <div className="card">
+          {message ? (
+            <Alert message={message} messageType={messageType} />
+          ) : null}
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
@@ -122,4 +135,12 @@ AddClient.propTypes = {
   firestore: PropTypes.object.isRequired
 };
 
-export default firestoreConnect()(AddClient);
+export default compose(
+  firestoreConnect(),
+  connect(
+    (state, props) => ({
+      notify: state.notify
+    }),
+    { notifyUser }
+  )
+)(AddClient);
