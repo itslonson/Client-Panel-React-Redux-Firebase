@@ -10,8 +10,6 @@ import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
 import "firebase/auth";
 
-// TODO CLEAR NOTIFICATION MESSAGES
-
 class Login extends Component {
   state = {
     email: "",
@@ -33,6 +31,7 @@ class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(notifyUser(null, null))
       .catch(err => notifyUser("Неверные данные входа", "error"));
   };
 

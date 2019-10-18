@@ -9,8 +9,6 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import PropTypes from "prop-types";
 
-// TODO CLEAR NOTIFICATION MESSAGES
-
 class AddClient extends Component {
   state = {
     firstName: "",
