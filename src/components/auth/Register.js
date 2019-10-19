@@ -10,11 +10,19 @@ import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
 import "firebase/auth";
 
-class Login extends Component {
+class Register extends Component {
   state = {
     email: "",
     password: ""
   };
+
+  componentWillMount() {
+    const { allowRegistration } = this.props.settings;
+
+    if (!allowRegistration) {
+      this.props.history.push("/");
+    }
+  }
 
   onChange = e => {
     this.setState({
@@ -30,8 +38,8 @@ class Login extends Component {
 
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(err => notifyUser("Неверные данные входа", "error"))
+      .createUserWithEmailAndPassword(email, password)
+      .catch(err => notifyUser("Пользователь уже существует", "error"))
       .then(notifyUser(null, null));
   };
 
@@ -47,7 +55,7 @@ class Login extends Component {
               ) : null}
               <h2 className="text-center pb-4 pt-3">
                 <span className="text-primary">
-                  <i className="fas fa-lock"></i> Вход
+                  <i className="fas fa-lock"></i> Регистрация
                 </span>
               </h2>
               <form onSubmit={this.onSubmit}>
@@ -75,7 +83,7 @@ class Login extends Component {
                 </div>
                 <input
                   type="submit"
-                  value="Войти"
+                  value="Создать"
                   className="btn btn-primary btn-block"
                 />
               </form>
@@ -87,7 +95,7 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+Register.propTypes = {
   firebase: PropTypes.object.isRequired,
   notify: PropTypes.object.isRequired,
   notifyUser: PropTypes.func.isRequired
@@ -97,8 +105,9 @@ export default compose(
   firebaseConnect(),
   connect(
     (state, props) => ({
-      notify: state.notify
+      notify: state.notify,
+      settings: state.settings
     }),
     { notifyUser }
   )
-)(Login);
+)(Register);
