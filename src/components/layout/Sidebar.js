@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AddClient from "../../components/clients/AddClient";
+import Modal from "./Modal";
 
 export class Sidebar extends Component {
   render() {
@@ -13,36 +13,7 @@ export class Sidebar extends Component {
         >
           <i className="fas fa-plus" /> Добавить
         </button>
-
-        <div
-          className="modal fade"
-          id="addContactModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="addContactModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="addContactModalLabel">
-                  Добавление клиента
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <AddClient />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Modal />
       </div>
     );
   }

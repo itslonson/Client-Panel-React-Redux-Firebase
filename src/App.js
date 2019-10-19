@@ -15,6 +15,7 @@ import Dashboard from "./components/layout/Dashboard";
 import ClientDetails from "./components/clients/ClientDetails";
 import EditClient from "./components/clients/EditClient";
 import Login from "./components/auth/Login";
+import Settings from "./components/settings/Settings";
 
 function App() {
   return (
@@ -27,8 +28,19 @@ function App() {
               <Switch>
                 <Route
                   exact
+                  path="/login"
+                  component={UserIsNotAuthenticated(Login)}
+                />
+                <Route
+                  exact
                   path="/"
                   component={UserIsAuthenticated(Dashboard)}
+                />
+                />
+                <Route
+                  exact
+                  path="/settings"
+                  component={UserIsAuthenticated(Settings)}
                 />
                 <Route
                   exact
@@ -39,11 +51,6 @@ function App() {
                   exact
                   path="/client/edit/:id"
                   component={UserIsAuthenticated(EditClient)}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  component={UserIsNotAuthenticated(Login)}
                 />
               </Switch>
             </div>

@@ -48,8 +48,11 @@ class EditClient extends Component {
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/" className="btn btn-link">
-                <i className="fas fa-arrow-circle-left"> Назад к клиентам</i>
+              <Link to={`/client/${client.id}`} className="btn btn-link">
+                <i className="fas fa-arrow-circle-left">
+                  {" "}
+                  Назад к информации о клиенте
+                </i>
               </Link>
             </div>
           </div>

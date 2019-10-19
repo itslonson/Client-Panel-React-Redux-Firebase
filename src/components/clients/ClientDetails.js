@@ -83,7 +83,7 @@ class ClientDetails extends Component {
                 <i className="fas fa-arrow-circle-left"> Назад к клиентам</i>
               </Link>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 pb-3">
               <div className="btn-group float-right">
                 <Link to={`/client/edit/${client.id}`} className="btn btn-dark">
                   Изменить
@@ -94,7 +94,7 @@ class ClientDetails extends Component {
               </div>
             </div>
           </div>
-          <hr />
+
           <div className="card">
             <h3 className="card-header">
               {client.firstName} {client.lastName}
