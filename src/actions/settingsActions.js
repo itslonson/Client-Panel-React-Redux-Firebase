@@ -45,6 +45,7 @@ export const setDisableBalanceOnEdit = () => {
 
   // Set back to localStorage
   localStorage.setItem("settings", JSON.stringify(settings));
+
   return {
     type: DISABLE_BALANCE_ON_EDIT,
     payload: settings.disableBalanceOnEdit
