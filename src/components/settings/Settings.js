@@ -56,9 +56,7 @@ class Settings extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>
-                  Отключить внесение баланса при создании новой записи
-                </label>{" "}
+                <label>Отключить долг при создании</label>{" "}
                 <input
                   type="checkbox"
                   name="disabeBalanceOnAdd"
@@ -67,9 +65,7 @@ class Settings extends Component {
                 />
               </div>
               <div className="form-group">
-                <label>
-                  Отключить изменение баланса при редактировании записи
-                </label>{" "}
+                <label>Отключить долг при редактировании</label>{" "}
                 <input
                   type="checkbox"
                   name="disabeBalanceOnEdit"
