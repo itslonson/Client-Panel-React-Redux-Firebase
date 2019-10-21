@@ -3,11 +3,6 @@ Live link: https://react-client-panel-88093.web.app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-### `npm start`
-
-
-To build the app for production to the `build` folder, you can run:
-### `npm run build`
+1. Install dependencies: ### `npm install`
+2. Run the project: ### `npm start`
+3. Build the app for the production to the `build` folder: ### `npm run build`
